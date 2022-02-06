@@ -25,18 +25,30 @@ function Sidebar() {
             <Category>
                 <Link 
                 to="/about"
-                style={{textDecoration: "none", color: "black"}}
+                style={{
+                    textDecoration: "none",
+                    color: "black",
+
+                    }}
                 >about</Link>
                 <Link 
                 to="/gallery"
-                style={{textDecoration: "none", color: "black"}}
+                style={{
+                    textDecoration: "none",
+                    color: "black",
+
+                }}
                 onClick= {()=>{
                     dispatch(openGallery());
                 }}
                 >gallery</Link>
                 <Link 
                 to="/contact"
-                style={{textDecoration: "none", color: "black"}}>contact</Link>
+                style={{
+                    textDecoration: "none",
+                    color: "black",
+                    
+                     }}>contact</Link>
             </Category>
         </Main>
     )
@@ -48,12 +60,22 @@ const Category = styled.div`
     flex-direction: column;
     height: 30vh;
     justify-content: space-around;
+    @media screen and (max-width: 780px) {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5vh;
+        width: 40vw;
+    }
 `
 
 const ForSearch = styled.div`
     display: block;
     padding-top: 20px;
     padding-bottom: 25px;
+    @media screen and (max-width: 780px) {
+        position: fixed;
+        top: -300px;
+    }
 `
 
 const SearchButton = styled.button`
@@ -76,11 +98,20 @@ const InputForGoogle = styled.input`
 const Main = styled.div`
 width: 220px;
 height: 100%;
-background-color: #0059ab;
+background: #3fa46a;
 position: fixed;
 top: 0;
 z-index: 1;
 left: 0;
+@media screen and (max-width: 780px) {
+    width: 100vw;
+    height: 15vh;
+    background: #3fa46a;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+}
 `
 
 

@@ -4,24 +4,32 @@ import Main from '../components/Main';
 import Sidebar from '../components/Sidebar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../modules';
+import Sidebarview from '../components/Sidebarview';
+import About from '../components/About';
+import Gallery from '../components/Gallery';
 
 function AppRouter() {
-    const sidebar = useSelector((state: RootState) => state.sidebar);
+    // const sidebar = useSelector((state: RootState) => state.sidebar);
+    // const [sidebarRender, setSidbarRender] = React.useState(<></>);
 
-    React.useEffect(()=>{
-        console.log("sidebar : ", sidebar);
-    },[]);
+    // React.useEffect(()=>{
+    // },[sidebar]);
 
     return (
         <BrowserRouter>
-        {/* 
-            사이드바에서 카테고리를 누르면 사이드바 뷰가나오도록 상태관리할 것
-            {sideviwe ? <Sidebar/> : <Sidebarview />}
-        */}
-        <Sidebar/>
+        <Sidebar />
         <Switch>
             <Route exact path="/">
                 <Main />
+            </Route>
+            <Route path="/about">
+                <About text="About" />
+            </Route>
+            <Route path="/gallery">
+                <Gallery />
+            </Route>
+            <Route path="/contact">
+                <About text="crfaceit@gmail.com" />
             </Route>
         </Switch>
         </BrowserRouter>

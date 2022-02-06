@@ -25,8 +25,8 @@ type sidebarState = {
 }
 
 // 초기상태를 선언합니다.
-const initialState : sidebarState = {
-    isGallery: false
+let initialState : sidebarState = {
+    isGallery: true
 }
 
 // 리듀서를 작성합니다.
@@ -38,7 +38,7 @@ type Props = {
     action: SidebarAction
 }
 
-function sidebar({ state = initialState, action} : Props){
+function sidebar(state = initialState, action : SidebarAction) {
     switch(action.type){
         case OPEN_GALLERY: 
             return Object.assign({}, state, {isGallery: true});

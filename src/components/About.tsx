@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
 type Props = {
     text: string
@@ -6,10 +7,14 @@ type Props = {
 
 function About({ text }: Props) {
     return (
-        <div>
+        <Main>
             {text}
-        </div>
+        </Main>
     )
 }
+
+const Main = styled.div`
+margin-left: 220px;
+`
 
 export default About
