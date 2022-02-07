@@ -26,7 +26,7 @@ type sidebarState = {
 
 // 초기상태를 선언합니다.
 let initialState : sidebarState = {
-    isGallery: true
+    isGallery: false
 }
 
 // 리듀서를 작성합니다.
@@ -41,10 +41,13 @@ type Props = {
 function sidebar(state = initialState, action : SidebarAction) {
     switch(action.type){
         case OPEN_GALLERY: 
+            console.log('sidebar reducer OPEN_GALLERY 실행됌');
             return Object.assign({}, state, {isGallery: true});
         case CLOSE_GALLERY:
+            console.log('sidebar reducer CLOSE_GALLERY 실행됌')
             return Object.assign({}, state, {isGallery: false});
         default:
+            console.log('sidebar reducer 실행됌')
             return state;
     }
 }

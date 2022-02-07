@@ -11,6 +11,7 @@ function Main() {
 
 const _Main = styled.div`
     margin-left: 220px;
+    background-color: #FAFAFA;
 `
 
 export default Main

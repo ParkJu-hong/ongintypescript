@@ -1,69 +1,108 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { openGallery } from '../modules/sidebar';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../modules';
+import { openGallery, closeGallery } from '../modules/sidebar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard, faCameraRetro, faPhone } from '@fortawesome/free-solid-svg-icons'
+import Sidebarview from './Sidebarview';
+
+import { Motion, spring } from 'react-motion';
+
 
 function Sidebar() {
     const dispatch = useDispatch();
+    const _sidebar = useSelector((state: RootState) => state.sidebar.isGallery);
+    const [sidebar, setSidebar] = useState(_sidebar);
+
+    useEffect(() => {
+        setSidebar(_sidebar);
+    }, [_sidebar])
+
     return (
-        <Main>
-            <div style={{ marginLeft: "2vw" }}>
-                <Link 
-                to="/"
-                style={{textDecoration: "none", color: "black"}}
-                ><h1>Ha Chae-rin</h1></Link>
-            </div>
-            <ForSearch>
-            <InputForGoogle
-                type="text"
-                placeholder="Google 검색"
-            ></InputForGoogle>
-            {/* 인풋옆에 바로 버튼이 있도록 구현할 것 */}
-            <SearchButton>검색</SearchButton>
-            </ForSearch>
-            <Category>
-                <Link 
-                to="/about"
-                style={{
-                    textDecoration: "none",
-                    color: "black",
-
+        <>
+            <Main>
+                {sidebar ?
+                    <Motion
+                        defaultStyle={{ x: -200, opacity: 0 }}
+                        style={{ x: spring(0), opacity: spring(1) }}>
+                        {(style: any) => (
+                            <Sidebarview _opacity={Number(style.opacity)} />
+                        )}
+                    </Motion> :
+                    <></>}
+                <div style={{ marginLeft: "10px" }}>
+                    <Link
+                        to="/"
+                        style={{ textDecoration: "none", color: "Black" }}
+                    ><h1
+                    onClick={()=>{
+                        dispatch(closeGallery());
                     }}
-                >about</Link>
-                <Link 
-                to="/gallery"
-                style={{
-                    textDecoration: "none",
-                    color: "black",
+                    >Ha Chae-rin</h1></Link>
+                </div>
+                <Category>
+                    <Link
+                        to="/about"
+                        style={{
+                            textDecoration: "none",
+                            color: "Black",
+                        }}
+                    ><FontAwesomeIcon 
+                    icon={faAddressCard}
+                     size="2x"
+                     onClick={()=>{
+                        dispatch(closeGallery());
+                    }}
+                     /></Link>
+                    <Link
+                        to="/gallery"
+                        style={{
+                            textDecoration: "none",
+                            color: "Black",
 
-                }}
-                onClick= {()=>{
-                    dispatch(openGallery());
-                }}
-                >gallery</Link>
-                <Link 
-                to="/contact"
-                style={{
-                    textDecoration: "none",
-                    color: "black",
-                    
-                     }}>contact</Link>
-            </Category>
-        </Main>
+                        }}
+                    ><FontAwesomeIcon
+                            icon={faCameraRetro}
+                            size="2x"
+                            onClick={() => {
+                                if (!sidebar) {
+                                    dispatch(openGallery());
+                                } else {
+                                    dispatch(closeGallery());
+                                }
+                            }}
+                        /></Link>
+                    <Link
+                        to="/contact"
+                        style={{
+                            textDecoration: "none",
+                            color: "Black",
+
+                        }}><FontAwesomeIcon
+                         icon={faPhone}
+                          size="2x"
+                          onClick={()=>{
+                            dispatch(closeGallery());
+                        }}
+                          /></Link>
+                </Category>
+            </Main>
+        </>
     )
 }
 const Category = styled.div`
-    margin-top: 20vh;
+    margin-top: 30vh;
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 45vh;
     justify-content: space-around;
     @media screen and (max-width: 780px) {
         display: flex;
         flex-direction: row;
-        margin-top: 5vh;
+        margin-top: 4vh;
         width: 40vw;
     }
 `
@@ -98,7 +137,7 @@ const InputForGoogle = styled.input`
 const Main = styled.div`
 width: 220px;
 height: 100%;
-background: #3fa46a;
+background: #FFFFFF;
 position: fixed;
 top: 0;
 z-index: 1;
@@ -106,7 +145,7 @@ left: 0;
 @media screen and (max-width: 780px) {
     width: 100vw;
     height: 15vh;
-    background: #3fa46a;
+    background: #FFFFFF;
     position: fixed;
     z-index: 1;
     display: flex;
@@ -116,3 +155,15 @@ left: 0;
 
 
 export default Sidebar
+
+
+
+            // {/* <ForSearch>
+            // <InputForGoogle
+            //     type="text"
+            //     placeholder="Google 검색"
+            // ></InputForGoogle>
+            // {/* 인풋옆에 바로 버튼이 있도록 구현할 것 */}
+            // <SearchButton>검색</SearchButton>
+            // </ForSearch> */}
+

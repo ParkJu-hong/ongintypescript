@@ -1,19 +1,26 @@
 import React from 'react';
-import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from '../components/Main';
 import Sidebar from '../components/Sidebar';
-import { useSelector } from 'react-redux';
-import { RootState } from '../modules';
-import Sidebarview from '../components/Sidebarview';
 import About from '../components/About';
 import Gallery from '../components/Gallery';
+import Manager from '../components/manager/Manager';
+import { authService } from '../fBase';
 
 function AppRouter() {
-    // const sidebar = useSelector((state: RootState) => state.sidebar);
-    // const [sidebarRender, setSidbarRender] = React.useState(<></>);
+    const [isManager, setIsManager] = React.useState(false);
 
-    // React.useEffect(()=>{
-    // },[sidebar]);
+    React.useEffect(()=>{
+        authService.onAuthStateChanged((user:any) => {
+            console.log("user : ", user.multiFactor.user.email);
+            // console.log("user : ", user.multiFactor.email);
+            if(user.multiFactor.user.email === 'bejejupark@gmail.com'
+            || user.multiFactor.user.email === 'crfaceit@gmail.com'
+            ){
+                setIsManager(true);
+            }
+        });
+    },[])
 
     return (
         <BrowserRouter>
@@ -30,6 +37,9 @@ function AppRouter() {
             </Route>
             <Route path="/contact">
                 <About text="crfaceit@gmail.com" />
+            </Route>
+            <Route path="/manager">
+                <Manager isManager={isManager}/>
             </Route>
         </Switch>
         </BrowserRouter>
