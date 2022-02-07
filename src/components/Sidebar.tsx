@@ -103,6 +103,7 @@ const Category = styled.div`
         display: flex;
         flex-direction: row;
         margin-top: 4vh;
+        height: 0vh;
         width: 40vw;
     }
 `

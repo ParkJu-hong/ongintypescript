@@ -15,32 +15,46 @@ function Manager({ isManager }: Props) {
         await authService.signInWithPopup(provider);
     }
 
+    /*
+        1. 사진카테고리별로 업로드할 수 있는 컴포넌트 만들 것
+            일일히 만들어야하나..?
+            
+
+        2. 사진카테고리별로 딜리트할 수 있는 컴포넌트 만들 것
+    */
+
     return (
         <Main>
             <MainBox>
-                <div
-                    style={{ textAlign: "center" }}
-                ><FontAwesomeIcon
-                        icon={faGoogle}
-                        size="2x"
-                        onClick={onSocialClick}
-                    /></div>
-                    <div>
-                    {isManager ? <>사진 업로드 등등..</> : <>로그인해주세요.</>}
-                    </div>
+                <div>
+                    {isManager ? <>사진 업로드 등등..</> : <div
+                    ><FontAwesomeIcon
+                            icon={faGoogle}
+                            size="2x"
+                            onClick={onSocialClick}
+                        /></div>}
+                </div>
             </MainBox>
         </Main>
     )
 }
 const MainBox = styled.div`
+    border: 1px solid red;
     margin-left: 10vw;
     margin-top: 10vh;
     width: 500px;
     height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
 const Main = styled.div`
  margin-left: 300px;
-
+ @media screen and (max-width: 780px) {
+    margin-left: 0px;
+    margin-top: 25vh;
+ }
 `
 
 export default Manager
