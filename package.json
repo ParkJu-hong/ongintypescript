@@ -1,5 +1,6 @@
 {
   "name": "ongintypescript",
+  "homepage":"http://parkJu-hong.github.io/ongintypescript",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,7 +35,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +60,7 @@
   },
   "devDependencies": {
     "@types/react-motion": "0.0.32",
-    "@types/uuid": "^8.3.4"
+    "@types/uuid": "^8.3.4",
+    "gh-pages": "^3.2.3"
   }
 }

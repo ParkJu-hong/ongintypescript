@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import Main from '../components/Main';
 import Sidebar from '../components/Sidebar';
 import About from '../components/About';
@@ -23,7 +23,7 @@ function AppRouter() {
     },[])
 
     return (
-        <BrowserRouter>
+        <HashRouter basename={process.env.PUBLIC_URL}>
         <Sidebar />
         <Switch>
             <Route exact path="/">
@@ -51,7 +51,7 @@ function AppRouter() {
                 <Manager isManager={isManager}/>
             </Route>
         </Switch>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

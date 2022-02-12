@@ -8,10 +8,11 @@ type Props = {
 function About({ text }: Props) {
     return (
         <Main>
-            <div><strong>She born 1999.10.5 in Deajeon, South Korea</strong></div>
+            {text === 'About' ? <><div><strong>She born 1999.10.5 in Deajeon, South Korea</strong></div>
             <div><strong>and has starting to play photo till' now</strong></div>
             <br></br>
-            <div><strong>You can see what she see, how she see like here</strong></div>
+            <div><strong>You can see what she see, how she see like here</strong></div></> 
+            : <div><strong>{text}</strong></div>}
         </Main>
     )
 }
