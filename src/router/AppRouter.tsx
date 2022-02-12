@@ -27,13 +27,22 @@ function AppRouter() {
         <Sidebar />
         <Switch>
             <Route exact path="/">
-                <Main />
+            <About text="About" />
             </Route>
             <Route path="/about">
                 <About text="About" />
             </Route>
-            <Route path="/gallery">
-                <Gallery />
+            <Route path="/gallery/spring">
+                <Gallery season="spring"/>
+            </Route>
+            <Route path="/gallery/summer">
+                <Gallery season="summer"/>
+            </Route>
+            <Route path="/gallery/autumn">
+                <Gallery season="autumn"/>
+            </Route>
+            <Route path="/gallery/winter">
+                <Gallery season="winter"/>
             </Route>
             <Route path="/contact">
                 <About text="crfaceit@gmail.com" />

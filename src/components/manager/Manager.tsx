@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { authService, firebaseInstance } from "../../fBase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import Upload from './Upload';
 
 type Props = {
     isManager: boolean;
@@ -27,7 +28,9 @@ function Manager({ isManager }: Props) {
         <Main>
             <MainBox>
                 <div>
-                    {isManager ? <>사진 업로드 등등..</> : <div
+                    {isManager ? <>
+                        <Upload/>
+                    </> : <div
                     ><FontAwesomeIcon
                             icon={faGoogle}
                             size="2x"
@@ -39,7 +42,6 @@ function Manager({ isManager }: Props) {
     )
 }
 const MainBox = styled.div`
-    border: 1px solid red;
     margin-left: 10vw;
     margin-top: 10vh;
     width: 500px;
