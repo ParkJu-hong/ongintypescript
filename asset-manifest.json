@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ongintypescript/static/css/main.e6c13ad2.css",
+    "main.js": "/ongintypescript/static/js/main.0d479892.js",
+    "static/js/787.bd15569c.chunk.js": "/ongintypescript/static/js/787.bd15569c.chunk.js",
+    "index.html": "/ongintypescript/index.html",
+    "main.e6c13ad2.css.map": "/ongintypescript/static/css/main.e6c13ad2.css.map",
+    "main.0d479892.js.map": "/ongintypescript/static/js/main.0d479892.js.map",
+    "787.bd15569c.chunk.js.map": "/ongintypescript/static/js/787.bd15569c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.0d479892.js"
+  ]
+}
